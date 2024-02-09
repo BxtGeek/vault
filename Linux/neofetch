@@ -1,0 +1,9 @@
+This is only for centos and rocky
+
+'''
+dnf install https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+'''
+
+'''
+dnf install neofetch
+'''
