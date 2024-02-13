@@ -1,8 +1,7 @@
 For modifying an old connection
 
 ```
-nmcli connection modify 
-7cb31d31-17c1-3e8a-9321-eb469611eb39 ipv4.method manual ipv4.addresses 192.168.64.61 ipv4.gateway 192.168.64.1 ipv4.dns 8.8.8.8,1.1.1.1
+nmcli connection modify <UUID or IFNAME> ipv4.method manual ipv4.addresses 192.168.64.61 ipv4.gateway 192.168.64.1 ipv4.dns 8.8.8.8,1.1.1.1
 ```
 
 For down a connection
