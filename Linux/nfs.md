@@ -7,4 +7,3 @@ yum install nfs-utils
 
 #mount the NFS using the below command 
 mount -a
-```
