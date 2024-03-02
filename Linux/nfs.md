@@ -1,4 +1,4 @@
-'''
+```
 #install the NFS packages
 yum install nfs-utils
 
