@@ -10,5 +10,6 @@ services:
     ports:
       - 5005:5005
     environment:
+      - PASSWORD=
       - TZ=Asia/Kolkata
     restart: unless-stopped
