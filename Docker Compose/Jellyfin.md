@@ -8,6 +8,7 @@ services:
       - PUID=0
       - PGID=0
       - TZ=Asia/Kolkata
+
     volumes:
       - /data/docker/jellyfin:/config
       - /data/download/series:/data/tvshows
@@ -15,3 +16,10 @@ services:
     ports:
       - 8096:8096
     restart: unless-stopped
+    networks:
+      - labnetwork
+
+networks:
+  labnetwork:
+    external: true
+
