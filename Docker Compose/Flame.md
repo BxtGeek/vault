@@ -10,6 +10,13 @@ services:
     ports:
       - 5005:5005
     environment:
-      - PASSWORD=
+      - PASSWORD=Apple@01/24
       - TZ=Asia/Kolkata
     restart: unless-stopped
+    networks:
+      - labnetwork
+
+networks:
+  labnetwork:
+    external: true
+
