@@ -9,5 +9,12 @@ services:
       - '81:81'
       - '443:443'
     volumes:
-      - /data/docker/nginx-proxy-manager/data:/data
-      - /data/docker/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
+      - '/data/docker/nginx-proxy-manager/data:/data'
+      - '/data/docker/nginx-proxy-manager/letsencrypt:/etc/letsencrypt'
+    networks:
+      - labnetwork
+
+networks:
+  labnetwork:
+    external: true
+
