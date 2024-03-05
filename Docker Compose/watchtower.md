@@ -9,3 +9,9 @@ services:
     environment:
       - TZ=Asia/Kolkata
     restart: unless-stopped
+    networks:
+      - labnetwork
+
+networks:
+  labnetwork:
+    external: true
