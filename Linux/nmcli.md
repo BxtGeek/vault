@@ -12,3 +12,7 @@ For up a connection
 ```
 nmcli connection down <infname>
 ```
+For changing the con id using nmcli
+```
+nmcli connection modify ens18 connection.id ens19
+```
