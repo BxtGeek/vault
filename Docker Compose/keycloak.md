@@ -1,5 +1,5 @@
 ```
-  version: '3.8'
+version: '3.8'
 
 services:
   keycloak:
@@ -14,12 +14,10 @@ services:
     networks:
       - labnetwork
     volumes:
-      - /data/docker/keycloak:keycloak-postgres
+      - /data/docker/keycloak:/var/lib/postgresql/data
 
 networks:
   labnetwork:
     external: true
 
-volumes:
-  keycloak-postgres:
 ```
