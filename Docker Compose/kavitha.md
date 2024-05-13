@@ -1,3 +1,4 @@
+'''
 ---
 services:
   kavita:
@@ -22,3 +23,5 @@ services:
 networks:
   labnetwork:
     external: true
+
+'''
