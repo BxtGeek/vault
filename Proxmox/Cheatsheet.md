@@ -112,3 +112,111 @@ Access this page by simply typing in "cs proxmox" in your browser address bar if
 - Shutdown the container. This will trigger a clean shutdown of the container, see lxc-stop(1) for details: `pct shutdown <vmid> [OPTIONS]`
 - Destroy the container (also delete all uses files): `pct destroy <vmid> [OPTIONS]`
 - Show CT status: `pct status <vmid> [OPTIONS]
+- Migrate the container to another node. Creates a new migration task: `pct migrate <vmid> <target> [OPTIONS]`
+- Get container configuration: `pct config <vmid> [OPTIONS]`
+- Print the list of assigned CPU sets: `pct cpusets`
+- Get container configuration, including pending changes: `pct pending <vmid>`
+- Reboot the container by shutting it down, and starting it again. Applies pending changes: `pct reboot <vmid> [OPTIONS]`
+- Create or restore a container: `pct restore <vmid> <ostemplate> [OPTIONS]`
+- Set container options: `pct set <vmid> [OPTIONS]`
+- Create a Template: `pct template <vmid>`
+- Unlock the VM: `pct unlock <vmid>`
+
+#### Disk
+
+- Get the container’s current disk usage: `pct df <vmid>`
+- Run a filesystem check (fsck) on a container volume: `pct fsck <vmid> [OPTIONS]`
+- Run fstrim on a chosen CT and its mountpoints: `pct fstrim <vmid> [OPTIONS]`
+- Mount the container’s filesystem on the host. This will hold a lock on the container and is meant for emergency maintenance only as it will prevent further operations on the container other than start and stop: `pct mount <vmid>`
+- Move a rootfs-/mp-volume to a different storage or to a different container: `pct move-volume <vmid> <volume> [<storage>] [<target-vmid>] [<target-volume>] [OPTIONS]`
+- Unmount the container’s filesystem: `pct unmount <vmid>`
+- Resize a container mount point: `pct resize <vmid> <disk> <size> [OPTIONS]`
+- Rescan all storages and update disk sizes and unused disk images: `pct rescan [OPTIONS]`
+- Launch a console for the specified container: `pct console <vmid> [OPTIONS]`
+- Launch a shell for the specified container: `pct enter <vmid>`
+- Launch a command inside the specified container: `pct exec <vmid> [<extra-args>]`
+- Copy a file from the container to the local system: `pct pull <vmid> <path> <destination> [OPTIONS]`
+- Copy a local file to the container: `pct push <vmid> <file> <destination> [OPTIONS]`
+
+#### Snapshot
+
+- Snapshot a container: `pct snapshot <vmid> <snapname> [OPTIONS]`
+- List all snapshots: `pct listsnapshot <vmid>`
+- Rollback LXC state to specified snapshot: `pct rollback <vmid> <snapname> [OPTIONS]`
+- Delete a LXC snapshot: `pct delsnapshot <vmid> <snapname> [OPTIONS]`
+
+### Web GUI
+
+- Restart web GUI: `service pveproxy restart`
+
+### Important File/Dir Path
+
+#### PVE
+
+- /etc/pve/authkey.pub: Public key used by the ticket system
+- /etc/pve/ceph.conf: Ceph configuration file (note: /etc/ceph/ceph.conf is a symbolic link to this)
+- /etc/pve/corosync.conf: Corosync cluster configuration file (prior to Proxmox VE 4.x, this file was called cluster.conf)
+- /etc/pve/datacenter.cfg: Proxmox VE data center-wide configuration (keyboard layout, proxy, …)
+- /etc/pve/domains.cfg: Proxmox VE authentication domains
+- /etc/pve/firewall/cluster.fw: Firewall configuration applied to all nodes
+- /etc/pve/firewall/<NAME>.fw: Firewall configuration for individual nodes
+- /etc/pve/firewall/<VMID>.fw: Firewall configuration for VMs and containers
+- /etc/pve/ha/crm_commands: Displays HA operations that are currently being carried out by the CRM
+- /etc/pve/ha/manager_status: JSON-formatted information regarding HA services on the cluster
+- /etc/pve/ha/resources.cfg: Resources managed by high availability, and their current state
+- /etc/pve/nodes/<NAME>/config: Node-specific configuration
+- /etc/pve/nodes/<NAME>/lxc/<VMID>.conf: VM configuration data for LXC containers
+- /etc/pve/nodes/<NAME>/openvz/: Prior to PVE 4.0, used for container configuration data (deprecated, removed soon)
+- /etc/pve/nodes/<NAME>/pve-ssl.key: Private SSL key for pve-ssl.pem
+- /etc/pve/nodes/<NAME>/pve-ssl.pem: Public SSL certificate for web server (signed by cluster CA)
+- /etc/pve/nodes/<NAME>/pveproxy-ssl.key: Private SSL key for pveproxy-ssl.pem (optional)
+- /etc/pve/nodes/<NAME>/pveproxy-ssl.pem: Public SSL certificate (chain) for web server (optional override for pve-ssl.pem)
+- /etc/pve/nodes/<NAME>/qemu-server/<VMID>.conf: VM configuration data for KVM VMs
+- /etc/pve/priv/authkey.key: Private key used by ticket system
+- /etc/pve/priv/authorized_keys: SSH keys of cluster members for authentication
+- /etc/pve/priv/ceph*: Ceph authentication keys and associated capabilities
+- /etc/pve/priv/known_hosts: SSH keys of the cluster members for verification
+- /etc/pve/priv/lock/*: Lock files used by various services to ensure safe cluster-wide operations
+- /etc/pve/priv/pve-root-ca.key: Private key of cluster CA
+- /etc/pve/priv/shadow.cfg: Shadow password file for PVE Realm users
+- /etc/pve/priv/storage/<STORAGE-ID>.pw: Contains the password of a storage in plain text
+- /etc/pve/priv/tfa.cfg: Base64-encoded two-factor authentication configuration
+- /etc/pve/priv/token.cfg: API token secrets of all tokens
+- /etc/pve/pve-root-ca.pem: Public certificate of cluster CA
+- /etc/pve/pve-www.key: Private key used for generating CSRF tokens
+- /etc/pve/sdn/*: Shared configuration files for Software Defined Networking (SDN)
+- /etc/pve/status.cfg: Proxmox VE external metrics server configuration
+- /etc/pve/storage.cfg: Proxmox VE storage configuration
+- /etc/pve/user.cfg: Proxmox VE access control configuration (users/groups/…)
+- /etc/pve/virtual-guest/cpu-models.conf: For storing custom CPU models
+- /etc/pve/vzdump.cron: Cluster-wide vzdump backup-job schedule
+
+#### Debug
+
+- /etc/pve/.version: File versions (to detect file modifications)
+- /etc/pve/.members: Info about cluster members
+- /etc/pve/.vmlist: List of all VMs
+- /etc/pve/.clusterlog: Cluster log (last 50 entries)
+- /etc/pve/.rrd: RRD data (most recent entries)
+
+#### OpenVZ Section
+
+- /etc/vz/conf/xxx.conf: config
+- /var/lib/vz/root/xxx: data
+- /var/lib/vz/template/cache: template
+- /var/lib/vz/dump: snapshot
+- /etc/vz/vz.conf: OpenVZ config
+
+#### KVM Section
+
+- /var/lib/vz/images/xxx: data
+- /var/lib/vz/template/iso: template
+- /var/lib/vz/dump: snapshot
+
+#### LXC Section
+
+- /var/lib/lxc/xxx/config: config
+- /var/lib/vz/images/xxx: data
+- /var/lib/vz/template/cache: template
+- /var/lib/vz/dump: snapshot
+
