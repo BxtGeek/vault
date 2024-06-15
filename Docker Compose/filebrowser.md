@@ -4,7 +4,7 @@ services:
   filebrowser:
     image: filebrowser/filebrowser:latest
     ports:
-      - '8081:80'
+      - '80:80'
     volumes:
       - '/data:/srv'
       - '/data/docker/filebrowser/filebrowser.db:/database/filebrowser.db'
@@ -20,3 +20,4 @@ services:
 networks:
   labnetwork:
     external: true
+```
