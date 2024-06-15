@@ -8,7 +8,7 @@ services:
       - /data/docker/flame:/app/data
       - /var/run/docker.sock:/var/run/docker.sock
     ports:
-      - 5005:5005
+      - 80:5005
     environment:
       - PASSWORD=Apple@01/24
       - TZ=Asia/Kolkata
@@ -19,4 +19,5 @@ services:
 networks:
   labnetwork:
     external: true
+
 
