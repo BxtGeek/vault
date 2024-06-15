@@ -1,5 +1,4 @@
 ```
----
 services:
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
@@ -16,7 +15,7 @@ services:
       - /data/docker/qbittorrent:/config
       - /data/download:/downloads
     ports:
-      - 8080:8080
+      - 80:8080
       - 6881:6881
       - 6881:6881/udp
     restart: unless-stopped
