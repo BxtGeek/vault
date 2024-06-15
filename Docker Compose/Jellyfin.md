@@ -1,5 +1,4 @@
 ```
----
 services:
   jellyfin:
     image: lscr.io/linuxserver/jellyfin:latest
@@ -14,7 +13,7 @@ services:
       - /data/download/series:/data/tvshows
       - /data/download/movies:/data/movies
     ports:
-      - 8096:8096
+      - 80:8096
     restart: unless-stopped
     networks:
       - labnetwork
@@ -22,4 +21,3 @@ services:
 networks:
   labnetwork:
     external: true
-
