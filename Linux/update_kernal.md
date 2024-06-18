@@ -1,4 +1,4 @@
-# How to update the kernel
+# How to update the kernel in rocky linux
 
 1. `sudo dnf makecache`
 2. `sudo dnf check-update`
