@@ -6,4 +6,9 @@ alias speed="speedtest-cli --simple"
 alias wtr="curl wttr.in"
 neofetch
 PS1='[%*]-[%j]-[%m] %~ '
+
+#function
+cheatsh() {
+    curl "cheat.sh/$1"
+}
 ```
