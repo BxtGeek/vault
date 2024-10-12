@@ -20,3 +20,8 @@
      ```bash
      lxc.apparmor.profile: unconfined
      ```
+6. **Add these line to the /etc/fstab**
+   - To make the NFS mount point permanenet:
+     ```bash
+     192.168.1.73:/mnt/MainPool /data nfs defaults 0 0
+     ```
