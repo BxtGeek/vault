@@ -1,4 +1,4 @@
-Here's a detailed explanation of each command and the output you provided, along with the meaning of the parameters in the `/etc/passwd`, `/etc/shadow`, and `/etc/group` files.
+detailed explanation of each command and the output you provided, along with the meaning of the parameters in the `/etc/passwd`, `/etc/shadow`, and `/etc/group` files.
 
 ### Command:
 ```bash
