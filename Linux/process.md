@@ -35,6 +35,7 @@ In Unix/Linux, a job refers to a process that is started by the shell. Jobs can 
 
 **Example**: Running a command like `ping google.com` in the shell can be treated as a job that can be paused or brought to the foreground if it is running in the background.
 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
 Let's break down the commands and outputs one by one. I'll explain each command, its parameters, and what the output means.
 
 ### 1. `df -h`
