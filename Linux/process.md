@@ -1,3 +1,40 @@
+Here are the explanations for each term:
+
+### 1. **Process**
+A process is an instance of a program that is running on a computer. Every time a program or application is executed, the operating system creates a process for it. Processes have their own memory space, and they can perform tasks independently.
+
+**Example**: Opening a web browser starts a process that handles all the browser's activities.
+
+### 2. **Jobs**
+A job is a task that a user initiates to run in the shell. In Linux, a job can be a command or a script that is running either in the foreground or the background. Jobs can be managed using commands like `jobs`, `fg`, and `bg`.
+
+**Example**: Running a script in the background using `./script.sh &` creates a job that can be controlled by job management commands.
+
+### 3. **Application = Service**
+An application is a software program designed to perform a specific task or set of tasks. When an application runs continuously in the background and provides functionality to other programs or users, it is referred to as a "service."
+
+**Example**: A web server like Apache or Nginx runs as a service, listening for incoming connections and responding to them.
+
+### 4. **Script**
+A script is a file containing a sequence of commands that can be executed by the shell (or other interpreters). Scripts are typically used for automating repetitive tasks.
+
+**Example**: A Bash script to back up files or set up a development environment.
+
+### 5. **Daemon**
+A daemon is a background process that starts automatically and runs continuously, often without direct interaction from users. Daemons typically perform system-related tasks or provide services (like handling network requests).
+
+**Example**: The `sshd` daemon manages SSH connections to a server.
+
+### 6. **Threads**
+A thread is a smaller unit of a process. Threads are used to perform multiple tasks within the same process simultaneously. Unlike processes, threads share the same memory space but can run independently.
+
+**Example**: A web browser can have multiple threads: one for handling user input, another for downloading content, and another for rendering pages.
+
+### 7. **Job**
+In Unix/Linux, a job refers to a process that is started by the shell. Jobs can be controlled (stopped, started, and managed) using job control features of the shell. 
+
+**Example**: Running a command like `ping google.com` in the shell can be treated as a job that can be paused or brought to the foreground if it is running in the background.
+
 Let's break down the commands and outputs one by one. I'll explain each command, its parameters, and what the output means.
 
 ### 1. `df -h`
