@@ -1,5 +1,3 @@
-Certainly! Let’s break down **`chmod`** and **`umask`** in simple terms.
-
 ### `chmod` (Change Mode)
 
 - **What is it?**
