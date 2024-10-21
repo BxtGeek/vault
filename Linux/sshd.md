@@ -1,9 +1,3 @@
-Here's a simplified guide on how to install and start the SSH daemon (`sshd`) on Rocky Linux, written in Markdown format:
-
----
-
-# How to Install and Start SSH Daemon (`sshd`) on Rocky Linux
-
 `sshd` is a **daemon** (a background service) that allows remote connections to your Linux server using the SSH protocol. Below are the steps to install and set up `sshd`.
 
 **Note:** 
