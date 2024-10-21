@@ -98,4 +98,94 @@ After making changes, restart `sshd` to apply them:
 
 --- 
 
-That's it! You have successfully installed and configured `sshd` on Rocky Linux.
+To access a remote server without a password using SSH keys, you need to generate an SSH key pair on your local machine and copy the public key to the remote server. Follow these steps:
+
+---
+
+# Access Remote Server Without Password Using SSH Keys
+
+### Step 1: Generate SSH Key Pair on Your Local Machine
+
+Open a terminal on your **local** machine and run:
+
+```bash
+$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+```
+
+- `-t rsa` specifies the type of key to create.
+- `-b 4096` sets the key size to 4096 bits (more secure).
+- `-C "your_email@example.com"` is an optional comment to help identify the key.
+
+**Example Output:**
+```
+Generating public/private rsa key pair.
+Enter file in which to save the key (/home/youruser/.ssh/id_rsa): 
+```
+
+Just press **Enter** to save the key in the default location (`/home/youruser/.ssh/id_rsa`).
+
+**Note:** You can also set a passphrase for extra security or leave it empty for direct access.
+
+### Step 2: Copy the Public Key to the Remote Server
+
+Use the following command to copy your public key to the remote server:
+
+```bash
+$ ssh-copy-id user@remote_server_ip
+```
+
+Replace `user` with your username on the remote server and `remote_server_ip` with the IP address of the server.
+
+**Example:**
+```bash
+$ ssh-copy-id john@192.168.1.100
+```
+
+**Alternative:** If `ssh-copy-id` is not available, you can manually copy the key:
+
+1. Display the public key:
+   ```bash
+   $ cat ~/.ssh/id_rsa.pub
+   ```
+
+2. Copy the output and paste it into the `~/.ssh/authorized_keys` file on the remote server.
+
+### Step 3: Test SSH Login Without Password
+
+Now, try to connect to the remote server using SSH:
+
+```bash
+$ ssh user@remote_server_ip
+```
+
+You should be able to connect without being prompted for a password.
+
+**Example:**
+```bash
+$ ssh john@192.168.1.100
+```
+
+### Step 4: Secure Your SSH Configuration (Optional)
+
+For added security, you can disable password authentication on the remote server. Open the SSH configuration file on the **remote server**:
+
+```bash
+# vi /etc/ssh/sshd_config
+```
+
+Look for the following lines and set them as shown:
+
+```bash
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+```
+
+Then, restart the SSH service:
+
+```bash
+# systemctl restart sshd
+```
+
+---
+
+Now, your SSH keys are set up, and you can securely access your remote server without a password.
